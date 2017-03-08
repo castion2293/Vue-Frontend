@@ -11,7 +11,7 @@
                         <input v-model="password" class="form-control" type="password" placeholder="Password">
                     </div>
 
-                    <button @click="test" class="btn btn-success pull-right">Login</button>
+                    <button @click="login" class="btn btn-success pull-right">Login</button>
                 </div>
             </div>
         </div>
@@ -28,10 +28,29 @@
         },
 
         methods: {
-            test () {
-                this.$http.get("http://localhost:8000/api/test")
-                    .then(function(response) {
-                        console.log(response)
+            login () {
+                var data = {
+                    grant_type: 'password',
+                    client_id: 2,
+                    client_secret: 'wqAIhMT0KL9MLBPwGFEByrkj2fC2k6YTZwUn1mXP',
+                    username: 'astrid20@example.net',
+                    password: 'secret',
+                    scope: ''
+                }
+                
+                // this.$http.get("http://demobackend.com/api/test")
+                //     .then(response => {
+                //         //this.$auth.setToken(response.body.access_token, response.body.expires_in + Dae.now())
+                //         console.log(response)
+                        
+                //     })
+
+                this.$http.post("http://demobackend.com/oauth/token", data)
+                    .then(response => {
+                        this.$auth.setToken(response.body.access_token, response.body.expires_in + Date.now())
+                    
+                        //redirect route
+                        this.$router.push("/feed")
                     })
             }
         }
