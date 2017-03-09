@@ -32,8 +32,8 @@
                 var data = {
                     grant_type: 'password',
                     client_id: 2,
-                    client_secret: 'wqAIhMT0KL9MLBPwGFEByrkj2fC2k6YTZwUn1mXP',
-                    username: 'astrid20@example.net',
+                    client_secret: 'eve6IEjZFhEjHAbZ0rhq5SlyJIAT2Tqbj0EKQgYd',
+                    username: 'rogahn.coby@example.org',
                     password: 'secret',
                     scope: ''
                 }
@@ -45,10 +45,10 @@
                         
                 //     })
 
-                this.$http.post("http://demobackend.com/oauth/token", data)
+                this.$http.post("oauth/token", data)
                     .then(response => {
                         this.$auth.setToken(response.body.access_token, response.body.expires_in + Date.now())
-                    
+                        
                         //redirect route
                         this.$router.push("/feed")
                     })

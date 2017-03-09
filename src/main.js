@@ -7,6 +7,9 @@ import Auth from './packages/auth/Auth.js'
 Vue.use(VueResourse)
 Vue.use(Auth)
 
+Vue.http.options.root = 'http://demobackend.com/'
+Vue.http.headers.common['Authorization'] = 'Bearer ' + Vue.auth.getToken()
+
 Router.beforeEach(
   (to, from, next) => {
     if (to.matched.some(record => record.meta.forVisitors)) {
