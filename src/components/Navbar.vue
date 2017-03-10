@@ -13,6 +13,10 @@
                 <router-link tag="li" to="/feed" v-if="isAuth">
                     <a>Feed</a>
                 </router-link>
+
+                <router-link tag="li" to="/products/create" v-if="isAuth">
+                    <a>Create</a>
+                </router-link>
             
                 <router-link tag="li" to="/logout" v-if="isAuth">
                     <a>Logout</a>
@@ -33,6 +37,19 @@
 
         created () {
             this.isAuth = this.$auth.isAuthenticated()
+
+            this.setAuthenticatedUser()
+        },
+
+        methods: {
+            setAuthenticatedUser () {
+                this.$http.get('api/user')
+                    .then(response => {
+                        this.$auth.setAuthenticatedUser(response.body)
+
+                        console.log(this.$auth.getAuthenticatedUser())
+                    })
+            }
         }
     }
 </script>

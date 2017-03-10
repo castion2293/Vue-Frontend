@@ -32,8 +32,8 @@
                 var data = {
                     grant_type: 'password',
                     client_id: 2,
-                    client_secret: 'eve6IEjZFhEjHAbZ0rhq5SlyJIAT2Tqbj0EKQgYd',
-                    username: 'rogahn.coby@example.org',
+                    client_secret: 'VzYQT9KtESCUEuZvQ1AFePyW3q6rARNKhDIPBfDP',
+                    username: 'bayer.noemie@example.org',
                     password: 'secret',
                     scope: ''
                 }
